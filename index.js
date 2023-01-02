@@ -31,6 +31,9 @@
     if (meshList.length > 0)
       await nv1.loadMeshes(meshList);
   });
+  ipcRenderer.on('saveScene', async function (evt, message) {
+    nv1.saveScene(message);
+  });
   ipcRenderer.on('setSliceType', async function (evt, message) {
     nv1.setSliceType(message);
   });

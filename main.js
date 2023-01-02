@@ -30,6 +30,7 @@ if (isMac) {
 }
 
 let menu = null
+
 const dragClick = (menuItem, browserWindow, event) => {
     win.webContents.send('setDragType', menuItem.id)
 }
@@ -38,6 +39,10 @@ const penClick = (menuItem, browserWindow, event) => {
 }
 const standardClick = (menuItem, browserWindow, event) => {
     win.webContents.send('doStandard', menuItem.id)
+}
+
+const screenshotClick  = (menuItem, browserWindow, event) => {
+    win.webContents.send('saveScene', 'screenShot.png');
 }
 
 const otsuClick = (menuItem, browserWindow, event) => {
@@ -53,7 +58,6 @@ const otsuClick = (menuItem, browserWindow, event) => {
         win.webContents.send('drawOtsu', result.response + 2)
       }
     );
-    console.log("after message box");
 }
 
 const template = [
@@ -118,6 +122,9 @@ const template = [
         click: () => { 
           win.webContents.send('drawSave', 'draw.nii');
         },
+      },
+      { label: 'Take Screenshot' , 
+        click: screenshotClick,
       },
       {
         label: 'Standard',
