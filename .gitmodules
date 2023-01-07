@@ -1,7 +1,3 @@
-[submodule "niivue"]
-	path = niivue
-	url = https://github.com/niivue/niivue
-	branch = thresholding
 [submodule "niivue-ui"]
 	path = niivue-ui
 	url = git@github.com:niivue/niivue-ui.git
