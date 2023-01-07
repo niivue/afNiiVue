@@ -1,5 +1,7 @@
 # afNiiVue
 
+THIS REPO IS A WORK IN PROGRESS! Documentation may not always be current as long as you see this message. 
+
 afNiiVue is a cross-platform electron wrapper for the [NiiVue](https://github.com/niivue/niivue) web viewer. While web tools can work on any device (computer, phone, tablet) they must abide by strict security restrictions. For example, they are unable to load and save local files or listen to communication between applications. afNiiVue provides the power of a desktop application and is designed to communicate with [AFNI](https://afni.nimh.nih.gov/about_afni) tools.
 
 This repository is currently a proof-of-concept, with limited functionality.
