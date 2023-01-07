@@ -1,15 +1,45 @@
 {
   "name": "NiiVueApp",
   "version": "1.0.0",
-  "description": "Hello World!",
-  "main": "main.js",
-  "author": "Jane Doe",
-  "license": "MIT",
+  "description": "Cross platform medical image viewer.",
+  "main": "src/electron/main.js",
+  "author": "NiiVue developers",
+  "license": "BSD-2",
   "devDependencies": {
-    "electron": "^22.0.0",
-    "electron-packager": "^17.1.1"
+    "@electron-forge/cli": "^6.0.4",
+    "@electron-forge/maker-deb": "^6.0.4",
+    "@electron-forge/maker-rpm": "^6.0.4",
+    "@electron-forge/maker-squirrel": "^6.0.4",
+    "@electron-forge/maker-zip": "^6.0.4",
+    "electron": "^22.0.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "ignore": "(.git|.vscode|niivue-ui|.gitignore|README.md|LICENSE.md)"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-zip"
+        }
+    ]
+    }
   },
   "scripts": {
-    "start": "electron ."
+    "build-niivue": "cd niivue-ui/niivue && npm install && npm run build",
+    "build-ui": "npm run build-niivue && cd niivue-ui && npm install && npm run build && cp -r dist/* ../src/frontend/",
+    "build": "npm run build-ui",
+    "dev": "npm run build-ui && electron src/electron/main.js",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "electron-squirrel-startup": "^1.0.0",
+    "express": "^4.18.2",
+    "minimist": "^1.2.7",
+    "socket.io": "^4.5.4",
+    "socket.io-client": "^4.5.4"
   }
 }
